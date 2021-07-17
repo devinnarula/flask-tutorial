@@ -25,6 +25,7 @@ def index():
     return response
 
 @app.route('/api/create', methods=['POST'])
+@cross_origin()
 def create():
     request_data = json.loads(request.data)
     todo = Todo(content=request_data['content'])
@@ -36,9 +37,12 @@ def create():
 
 @app.route('/api/<int:id>')
 def show(id):
-    return jsonify([*map(todo_serializer, Todo.query.filter_by(id=id))])
+    response = jsonify([*map(todo_serializer, Todo.query.filter_by(id=id))])
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 @app.route('/api/delete/<int:id>', methods=['POST'])
+@cross_origin()
 def delete(id):
     request_data = json.loads(request.data)
     Todo.query.filter_by(id=request_data['id']).delete()
@@ -47,6 +51,7 @@ def delete(id):
     return {'204': 'Deleted successfully'}
 
 @app.route('/api/edit/<int:id>', methods=['POST'])
+@cross_origin()
 def edit(id):
     request_data = json.loads(request.data)
     Todo.query.filter_by(id=request_data['id']).update(dict(content=request_data['content']))
