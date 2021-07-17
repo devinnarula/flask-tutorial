@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "/Users/devinnarula/Documents/GitHub/flask-tutorial/todo-list/venv/bin/python3.9",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
+}
