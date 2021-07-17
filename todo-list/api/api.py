@@ -20,7 +20,9 @@ def todo_serializer(todo):
 
 @app.route('/api', methods=['GET'])
 def index():
-    return jsonify([*map(todo_serializer, Todo.query.all())])
+    response = jsonify([*map(todo_serializer, Todo.query.all())])
+    response.add("Access-Control-Allow-Origin", "*")
+    return response
 
 @app.route('/api/create', methods=['POST'])
 def create():
