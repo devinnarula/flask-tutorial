@@ -12,7 +12,7 @@ export const Edit = ({ id, updateTodo }) => {
     }
 
     const editTodo = ()=> {
-        fetch(`api/edit/${id}`,{
+        fetch(`https://todolistflasktutorial.herokuapp.com/api/edit/${id}`,{
             method: 'POST',
             body: JSON.stringify({
                 id: id,

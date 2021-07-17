@@ -9,7 +9,7 @@ export const TodoPage = ()=> {
     const [addTodo, setAddTodo] = useState('')
 
     useEffect(()=> {
-        fetch('/api').then(response => {
+        fetch('https://todolistflasktutorial.herokuapp.com/api').then(response => {
             if(response.ok){
                 return response.json()
             }
@@ -21,7 +21,7 @@ export const TodoPage = ()=> {
     }
 
     const handleFormSubmit = () => {
-        fetch('/api/create', {
+        fetch('https://todolistflasktutorial.herokuapp.com/api/create', {
             method: 'POST',
             body: JSON.stringify({
                 content: addTodo
@@ -38,7 +38,7 @@ export const TodoPage = ()=> {
     }
     
     const getLatestTodos = () => {
-        fetch('/api').then(response => {
+        fetch('https://todolistflasktutorial.herokuapp.com/api').then(response => {
             if(response.ok){
                 return response.json()
             }

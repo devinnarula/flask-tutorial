@@ -4,7 +4,7 @@ export const Delete = ({ id }) => {
     const history = useHistory()
 
     const deleteTodo = ()=> {
-        fetch(`api/delete/${id}`,{
+        fetch(`https://todolistflasktutorial.herokuapp.com/api/delete/${id}`,{
             method: 'POST',
             body: JSON.stringify({
                 id: id

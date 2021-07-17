@@ -8,13 +8,13 @@ export const Show = () => {
     const [todo, setTodo] = useState([])
 
     useEffect(()=> {
-        fetch(`/api/${id}`)
+        fetch(`https://todolistflasktutorial.herokuapp.com/api/${id}`)
         .then(response => response.json())
         .then(data => setTodo(data))
     }, [id])
 
     const getLatestTodo = () => {
-        fetch(`/api/${id}`).then(response => {
+        fetch(`https://todolistflasktutorial.herokuapp.com/api/${id}`).then(response => {
             if(response.ok){
                 return response.json()
             }
